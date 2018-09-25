@@ -17,7 +17,7 @@ WORKDIR /go/src/github.com/go-debos/debos/
 RUN GOOS=linux go build -a cmd/debos/debos.go
 
 ### second stage - runner ###
-FROM debian:stretch-slim as runner
+FROM debian:testing-slim as runner
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -27,6 +27,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     libostree-1-1 \
     ca-certificates \
+    debootstrap \
     systemd-container \
     binfmt-support \
     parted \
@@ -41,15 +42,6 @@ RUN apt-get update && \
     systemd \
     dbus \
     && rm -rf /var/lib/apt/lists/*
-
-# Bug description: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=806780
-# It was fixed in debootstrap 1.0.96 while Stretch provides 1.0.89. Backports
-# provide 1.0.100.
-RUN printf "deb http://httpredir.debian.org/debian stretch-backports main \ndeb-src http://httpredir.debian.org/debian stretch-backports main" > /etc/apt/sources.list.d/backports.list && \
-    apt-get update && \
-    apt-get -t stretch-backports install -y --no-install-recommends \
-    debootstrap && \
-    rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /go/src/github.com/go-debos/debos/debos /usr/bin/debos
 
