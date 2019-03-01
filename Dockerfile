@@ -41,6 +41,7 @@ RUN apt-get update && \
     linux-image-amd64 \
     systemd \
     dbus \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /go/src/github.com/go-debos/debos/debos /usr/bin/debos
