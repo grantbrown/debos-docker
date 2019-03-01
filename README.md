@@ -29,7 +29,7 @@ Pull Docker image
 -----------------
 
 ```
-docker pull 3mdeb/debos-docker
+docker pull jbbgameich/debos-docker
 ```
 
 Running

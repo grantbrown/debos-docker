@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USERNAME="3mdeb"
+USERNAME="jbbgameich"
 IMAGE="debos-docker"
 
 if [ $# -ne 1 ]; then

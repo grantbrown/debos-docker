@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USERNAME="3mdeb"
+USERNAME="jbbgameich"
 IMAGE="debos-docker"
 
 docker build -t $USERNAME/$IMAGE .

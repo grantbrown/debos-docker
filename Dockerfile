@@ -1,5 +1,5 @@
 ### first stage - builder ###
-FROM golang:1.10 as builder
+FROM golang:1.12 as builder
 
 MAINTAINER Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 
