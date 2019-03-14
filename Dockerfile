@@ -1,14 +1,19 @@
 ### first stage - builder ###
-FROM golang:1.12 as builder
+FROM debian:testing-slim as builder
 
 MAINTAINER Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 
 ENV HOME=/scratch
+ENV GOPATH /go
 
 # install debos build dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     libglib2.0-dev \
+    build-essential \
+    golang \
+    git \
+    ca-certificates \
     libostree-dev \
     && rm -rf /var/lib/apt/lists/*
 
