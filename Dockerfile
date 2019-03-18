@@ -47,6 +47,8 @@ RUN apt-get update && \
     systemd \
     dbus \
     unzip \
+    u-boot-tools \
+    pigz \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /go/src/github.com/go-debos/debos/debos /usr/bin/debos
