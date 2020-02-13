@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run --rm -it \
+docker run --rm -t \
     -u $(id -u) \
     --device /dev/kvm \
     --group-add=$(getent group kvm | cut -d : -f 3) \
